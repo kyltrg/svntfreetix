@@ -8,47 +8,14 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="app">
-        <div class="screen" id="screen1">
-            <img src="please_1.jpg" alt="Cute Picture" class="image">
-            <h1 class="text">Loveee Leila, will u be my valentine?</h1>
-            <button id="yesBtn" class="button yes">Yes</button>
-            <button id="noBtn" class="button no">No</button>
-        </div>
-        <div class="screen" id="screen2">
-            <img src="please_2.jpg" alt="Cute Picture" class="image">
-            <h1 class="text">Loveee Leila, will u be my valentine?</h1>
-            <button id="yesBtn2" class="button yes">Yes</button>
-            <button id="noBtn2" class="button no">Are you sure love?</button>
-        </div>
-        <div class="screen" id="screen3">
-            <img src="please_3.jpg" alt="Cute Picture" class="image">
-            <h1 class="text">Loveee Leila, will u be my valentine?</h1>
-            <button id="yesBtn3" class="button yes">Yes</button>
-            <button id="noBtn3" class="button no">Aww love naman, sure??</button>
-        </div>
-        <div class="screen" id="screen4">
-            <img src="please_4.jpg" alt="Cute Picture" class="image">
-            <h1 class="text">Loveee Leila, will u be my valentine?</h1>
-            <button id="yesBtn4" class="button yes">Yes</button>
-            <button id="noBtn4" class="button no">DON'T DO THIS TO MEEEE!!!!</button>
-        </div>
-        <div class="screen" id="screen5">
-            <img src="please_5.jpg" alt="Cute Picture" class="image">
-            <h1 class="text">Loveee Leila, will u be my valentine?</h1>
-            <button id="yesBtn5" class="button yes">Yes</button>
-            <button id="noBtn5" class="button no">PLEASEEE LOVE LEILAAA!!! HUHUHU</button>
-        </div>
-        <div class="screen" id="finalScreen">
-            <button id="finalBtn" class="button yes">YES!!!</button>
-        </div>
-        <div class="screen" id="yeyScreen">
-            <img src="YEYYY.jpg" alt="YEYYY" class="image">
-            <h1 class="text">YEYYY!!!</h1>
-            <button class="button yes">Awww!</button>
+    <div class="container">
+        <img id="valentineImage" src="please_1.jpg" alt="Cute Image">
+        <h1 id="question">Loveee Leila, will u be my valentine?</h1>
+        <div class="buttons">
+            <button id="yesBtn" onclick="yesClicked()">Yes</button>
+            <button id="noBtn" onclick="noClicked()">No</button>
         </div>
     </div>
-
     <script src="script.js"></script>
 </body>
 </html>
