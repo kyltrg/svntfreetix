@@ -18,19 +18,21 @@ document.addEventListener('DOMContentLoaded', () => {
             if (screenCounter < 5) {
                 screenCounter++;
                 showScreen(screenCounter);
-            } else {
-                showScreen(6); // Final screen
+            } else if (screenCounter === 5) {
+                showScreen(6); // Go to YEY screen
             }
         });
     });
 
     noBtns.forEach((btn, index) => {
         btn.addEventListener('click', () => {
-            // Enlarge 'Yes' button and change 'No' button text
-            yesBtns[index].style.transform = `scale(${(index + 2)})`; // Enlarge button
-            btn.textContent = `Are you sure love?`; // Change text
+            // Enlarge 'Yes' button and adjust 'No' button text dynamically
+            const scaleFactor = (index + 2);
+            yesBtns[index].style.transform = `scale(${scaleFactor})`; // Enlarge 'Yes' button
+            noBtns[index].style.transform = `scale(${scaleFactor})`; // Adjust 'No' button
+            noBtns[index].textContent = `Are you sure love?`; // Change text
             if (index === 4) {
-                btn.textContent = 'PLEASEEE LOVE LEILAAA!!! HUHUHU'; // Change text for last 'No' button
+                noBtns[index].textContent = 'PLEASEEE LOVE LEILAAA!!! HUHUHU'; // Change text for last 'No' button
             }
         });
     });
