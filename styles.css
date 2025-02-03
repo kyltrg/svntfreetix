@@ -20,7 +20,7 @@ body {
 }
 
 .image {
-    width: 100px;
+    width: 300px; /* Increase the image size */
     margin-bottom: 20px;
 }
 
@@ -39,7 +39,7 @@ body {
     border: none;
     cursor: pointer;
     border-radius: 5px;
-    transition: transform 0.3s;
+    transition: transform 0.3s, width 0.3s;
 }
 
 .yes {
@@ -60,4 +60,8 @@ button:active {
     font-size: 5rem;
     background-color: green;
     color: white;
+}
+
+#yeyScreen {
+    display: none;
 }
