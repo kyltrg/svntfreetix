@@ -1,63 +1,80 @@
-let clickCount = parseInt(localStorage.getItem('clickCount')) || 0;
-const yesButton = document.getElementById('yes-button');
-const noButton = document.getElementById('no-button');
-const message = document.getElementById('message');
-const image = document.getElementById('image');
+"use strict";
 
-const imageUrls = ['please_1.jpg', 'please_2.jpg', 'please_3.jpg', 'please_4.jpg', 'please_5.jpg'];
-const finalImage = 'YEYYY.jpg';
+const titleElement = document.querySelector(".title");
+const buttonsContainer = document.querySelector(".buttons");
+const yesButton = document.querySelector(".btn--yes");
+const noButton = document.querySelector(".btn--no");
+const image = document.querySelector(".image");
 
-// Set initial state from storage
-if (clickCount > 0) {
-    image.src = imageUrls[clickCount];
-    yesButton.classList.add(`enlarged-x${clickCount}`);
-    if (clickCount >= 1) {
-        noButton.textContent = ["Are you sure love?", "Aww love naman, sure??", "DON'T DO THIS TO MEEEE!!!!", "PLEASEEE LOVE LEILAAA!!! HUHUHU"][clickCount - 1];
-        if (clickCount >= 1) {
-            noButton.classList.add('modified');
-        }
+const MAX_IMAGES = 5;
+const imageUrls = [
+  "please_1.jpg", 
+  "please_2.jpg", 
+  "please_3.jpg", 
+  "please_4.jpg", 
+  "please_5.jpg"
+];
+const finalImage = "YEYYY.jpg";
+
+let play = true;
+let noCount = 0;
+
+yesButton.addEventListener("click", handleYesClick);
+
+noButton.addEventListener("click", function () {
+  if (play) {
+    noCount++;
+    const imageIndex = Math.min(noCount, MAX_IMAGES);
+    changeImage(imageIndex);
+    resizeYesButton();
+    updateNoButtonText();
+    if (noCount === MAX_IMAGES) {
+      play = false;
     }
-    if (clickCount >= 5) {
-        yesButton.style.transform = 'scale(10)';
-        message.textContent = "YES!!!";
-        image.src = finalImage;
-        noButton.style.display = 'none';
-    }
+  }
+});
+
+function handleYesClick() {
+  titleElement.innerHTML = "YEYYY!!!";
+  buttonsContainer.classList.add("hidden");
+  changeImage(finalImage);
+  playVoiceMessage();
 }
 
-noButton.addEventListener('click', function() {
-    clickCount++;
-    localStorage.setItem('clickCount', clickCount); // Save the state to localStorage
+function resizeYesButton() {
+  const computedStyle = window.getComputedStyle(yesButton);
+  const fontSize = parseFloat(computedStyle.getPropertyValue("font-size"));
+  const newFontSize = fontSize * 1.6;
 
-    if (clickCount === 1) {
-        image.src = imageUrls[1];
-        yesButton.classList.add('enlarged');
-        noButton.textContent = "Are you sure love?";
-        noButton.classList.add('modified');
-    } else if (clickCount === 2) {
-        image.src = imageUrls[2];
-        yesButton.classList.add('enlarged-x2');
-        noButton.textContent = "Aww love naman, sure??";
-    } else if (clickCount === 3) {
-        image.src = imageUrls[3];
-        yesButton.classList.add('enlarged-x3');
-        noButton.textContent = "DON'T DO THIS TO MEEEE!!!!";
-    } else if (clickCount === 4) {
-        image.src = imageUrls[4];
-        noButton.textContent = "PLEASEEE LOVE LEILAAA!!! HUHUHU";
-    }
-    if (clickCount >= 5) {
-        yesButton.style.transform = 'scale(10)';
-        message.textContent = "YES!!!";
-        image.src = finalImage;
-        noButton.style.display = 'none';
-    }
-});
+  yesButton.style.fontSize = `${newFontSize}px`;
+}
 
-yesButton.addEventListener('click', function() {
-    const audio = new Audio('voice-message.mp3');
-    audio.play();
-    setTimeout(() => {
-        alert('YEYYY!!!');
-    }, audio.duration * 1000);
-});
+function generateMessage(noCount) {
+  const messages = [
+    "No",
+    "Are you sure love?",
+    "Aww love naman, sure??",
+    "DON'T DO THIS TO MEEEE!!!!",
+    "PLEASEEE LOVE LEILAAA!!! HUHUHU"
+  ];
+
+  const messageIndex = Math.min(noCount, messages.length - 1);
+  return messages[messageIndex];
+}
+
+function changeImage(image) {
+  if (image === finalImage) {
+    image.src = `img/${image}`;
+  } else {
+    image.src = `img/${imageUrls[image - 1]}`;
+  }
+}
+
+function updateNoButtonText() {
+  noButton.innerHTML = generateMessage(noCount);
+}
+
+function playVoiceMessage() {
+  const audio = new Audio('voice-message.mp3');
+  audio.play();
+}
