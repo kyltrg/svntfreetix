@@ -1,55 +1,65 @@
 body {
-    background-color: #ffe6f2;
+    font-family: 'Kissing Season', sans-serif;
+    background-color: #f8e0e5; /* Light pink background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
     text-align: center;
-    font-family: Arial, sans-serif;
 }
 
-.container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+#container {
+    position: relative;
+    text-align: center;
 }
 
-img {
-    width: 300px; /* Normal size */
-    height: auto;
-    display: block;
-    margin: 0 auto 20px;
-    transition: transform 0.3s ease-in-out;
-}
-
-h1 {
-    font-family: 'Kissing Season', cursive;
-    font-size: 28px;
-    color: #d63384; /* Dark Pink */
+#image {
+    width: 200px; /* Slightly enlarged image */
     margin-bottom: 20px;
 }
 
-.buttons {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+p {
+    color: #d5006b; /* Dark pink font color */
+    font-size: 2em;
+    margin: 20px 0;
 }
 
 button {
-    font-size: 18px;
-    font-weight: bold;
-    color: white;
-    padding: 10px 20px;
-    border: none;
+    font-family: Arial, sans-serif;
+    padding: 15px 30px;
+    margin: 10px;
+    font-size: 1.5em;
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
+    transition: transform 0.3s ease, margin 0.3s ease;
 }
 
-#yesBtn {
-    background-color: #28a745;
+#yes-button {
+    background-color: #4CAF50; /* Green background */
+    color: white;
 }
 
-#noBtn {
-    background-color: #dc3545;
+#no-button {
+    background-color: #f44336; /* Red background */
+    color: white;
 }
 
-.hidden {
-    display: none;
+button:active {
+    transform: scale(1.1); /* Slight enlarge on click */
+}
+
+button.enlarged {
+    transform: scale(2); /* Enlarge on next step */
+}
+
+button.enlarged-x2 {
+    transform: scale(4); /* Enlarge further on next step */
+}
+
+button.enlarged-x3 {
+    transform: scale(6); /* Enlarge even more */
+}
+
+#no-button.modified {
+    margin-left: 40px; /* Adjust "No" button when "Yes" enlarges */
 }
