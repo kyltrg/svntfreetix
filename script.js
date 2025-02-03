@@ -1,39 +1,38 @@
-document.addEventListener('DOMContentLoaded', () => {
-    let screenCounter = 1;
-    const app = document.getElementById('app');
-    const screens = document.querySelectorAll('.screen');
-    const yesBtns = document.querySelectorAll('.button.yes');
-    const noBtns = document.querySelectorAll('.button.no');
-    
-    app.style.display = 'block';
-    screens[0].style.display = 'flex'; // Show the first screen
+let noClickCount = 0;
+const noTexts = [
+    "Are you sure love?",
+    "Aww love naman, sure??",
+    "DON'T DO THIS TO MEEEE!!!!",
+    "PLEASEEE LOVE LEILAAA!!! HUHUHU"
+];
 
-    function showScreen(nextScreen) {
-        screens.forEach(screen => screen.style.display = 'none'); // Hide all screens
-        screens[nextScreen - 1].style.display = 'flex'; // Show the next screen
+function noClicked() {
+    noClickCount++;
+
+    if (noClickCount >= noTexts.length) {
+        document.getElementById("yesBtn").style.fontSize = "50px";
+        document.getElementById("yesBtn").style.width = "300px";
+        document.getElementById("yesBtn").style.height = "100px";
+        document.getElementById("yesBtn").textContent = "YES!!!";
+        document.getElementById("noBtn").classList.add("hidden");
+    } else {
+        let yesButton = document.getElementById("yesBtn");
+        let noButton = document.getElementById("noBtn");
+
+        // Increase the size of the Yes button
+        let currentSize = parseInt(window.getComputedStyle(yesButton).fontSize);
+        yesButton.style.fontSize = (currentSize * 1.5) + "px";
+
+        // Change No button text
+        noButton.textContent = noTexts[noClickCount - 1];
     }
+}
 
-    yesBtns.forEach((btn, index) => {
-        btn.addEventListener('click', () => {
-            if (screenCounter < 5) {
-                screenCounter++;
-                showScreen(screenCounter);
-            } else if (screenCounter === 5) {
-                showScreen(6); // Go to YEY screen
-            }
-        });
-    });
-
-    noBtns.forEach((btn, index) => {
-        btn.addEventListener('click', () => {
-            // Enlarge 'Yes' button and adjust 'No' button text dynamically
-            const scaleFactor = (index + 2);
-            yesBtns[index].style.transform = `scale(${scaleFactor})`; // Enlarge 'Yes' button
-            noBtns[index].style.transform = `scale(${scaleFactor})`; // Adjust 'No' button
-            noBtns[index].textContent = `Are you sure love?`; // Change text
-            if (index === 4) {
-                noBtns[index].textContent = 'PLEASEEE LOVE LEILAAA!!! HUHUHU'; // Change text for last 'No' button
-            }
-        });
-    });
-});
+function yesClicked() {
+    document.body.innerHTML = `
+        <div class="container">
+            <img src="YEYYY.jpg" alt="YEYYY!">
+            <h1>YEYYY!!!</h1>
+        </div>
+    `;
+}
