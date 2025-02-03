@@ -1,65 +1,69 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
 body {
-    font-family: 'Kissing Season', sans-serif;
-    background-color: #f8e0e5; /* Light pink background */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    text-align: center;
+  background-color: #fff0f6;
+  font-family: "Kissing Season", sans-serif;
 }
 
-#container {
-    position: relative;
-    text-align: center;
+.container {
+  height: 100vh;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-#image {
-    width: 200px; /* Slightly enlarged image */
-    margin-bottom: 20px;
+.image {
+  width: 30rem;
+  height: 30rem;
+  margin-bottom: 2rem;
+  transform: scale(1.1); /* Enlarges the image slightly */
 }
 
-p {
-    color: #d5006b; /* Dark pink font color */
-    font-size: 2em;
-    margin: 20px 0;
+.title {
+  font-size: 3.6rem;
+  color: #f53699;
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
-button {
-    font-family: Arial, sans-serif;
-    padding: 15px 30px;
-    margin: 10px;
-    font-size: 1.5em;
-    cursor: pointer;
-    transition: transform 0.3s ease, margin 0.3s ease;
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }
 
-#yes-button {
-    background-color: #4CAF50; /* Green background */
-    color: white;
+.btn {
+  padding: 1.5rem 2.5rem;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 1.6rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-block;
 }
 
-#no-button {
-    background-color: #f44336; /* Red background */
-    color: white;
+.btn--yes {
+  background-color: #40c057;
 }
 
-button:active {
-    transform: scale(1.1); /* Slight enlarge on click */
+.btn--no {
+  background-color: #f03e3e;
 }
 
-button.enlarged {
-    transform: scale(2); /* Enlarge on next step */
-}
-
-button.enlarged-x2 {
-    transform: scale(4); /* Enlarge further on next step */
-}
-
-button.enlarged-x3 {
-    transform: scale(6); /* Enlarge even more */
-}
-
-#no-button.modified {
-    margin-left: 40px; /* Adjust "No" button when "Yes" enlarges */
+.hidden {
+  display: none;
 }
